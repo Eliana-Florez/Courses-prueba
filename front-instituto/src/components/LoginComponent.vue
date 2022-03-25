@@ -10,6 +10,7 @@
             <v-row class="white--text cyan accent-4 mx-auto my-auto rounded-t-lg d-flex px-10 py-6 " >
                 <h2 >LOGIN</h2>
             </v-row>
+            
 
             <v-row  justify="center" class="my-6  d-flex   py-6">
                 <form  @submit.prevent="submit">
@@ -59,7 +60,7 @@ export default {
         return {
             login: {
                 email: '',
-                password: ''
+                password: '',
             }
         }
     },
@@ -71,8 +72,13 @@ export default {
         axios
             .post(apiURL, this.login)
             .then(response => {
+                var token = response.data.token
+                localStorage.setItem("token",  token)
+                var rol = response.data.user.rol
+                localStorage.setItem("typeRol",  rol)
+                console.log(response)
+                location.reload(true)
                 alert("Se ha logueado satisfactoriamente");
-                this.$router.push( "/listCourses");
             })
             .catch(e => {
             console.log(e);

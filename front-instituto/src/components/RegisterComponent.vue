@@ -123,6 +123,7 @@ export default {
         axios
             .post(apiURL, this.user)
             .then(response => {
+
                 alert("¡El usuario se ha creado correctamente!");
                 this.$router.push({
                     name: "ListUsersView"

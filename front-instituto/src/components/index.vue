@@ -11,13 +11,17 @@
             <h1>COURSES</h1>
         </v-row>
         <v-row justify="center" class=" mx-auto my-5 d-flex ">
-                <v-col  class=" ml-16 pl-5">
+                <v-col  class=" ml-16 pl-5 my-auto">
                     <v-img height="250"  width="250" src="../assets/icons/student.png"
                     ></v-img>
                 </v-col>
 
                 <v-col  class="mr-15  my-auto text-justify">
                     <p>Bienvenido/a al software COURSES , regístrate para crear tu usuario y si eres administrador, crea cursos y podrás asignar estos a los alumnos registrados; pero si eres un alumno podrás ver cuáles son los cursos que tienes asignados.</p>
+                    <br/>
+                    <p><strong>Usuario Administrador: </strong> Para poder acceder a las opciones de administrador puede ingresar con el siguiente usuario</p>
+                    <p>Email: admin@mail.com <br/> Password: 123456789</p>
+                    <p><strong>Usuario Alumno/a: </strong> Para porder ingresar como alumno/a debe registrarse y luego loguearse </p>
                 </v-col>
             </v-row>
         </v-sheet>

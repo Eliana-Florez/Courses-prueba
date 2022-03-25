@@ -9,18 +9,27 @@
         </v-col>
         <v-col class="mx-3 "></v-col>
 
-        <v-col  class=" my-auto ">
-          <v-btn text color="#FFF" block 
-          href="/login"
+        <template v-if="!login">
+        <v-col class="mx-16 px-16"></v-col>
+        <v-col class="mx-16 px-16"></v-col>
+        <v-col class="mx-16 px-16"></v-col>
+        <v-col  class=" my-auto " r>
+          <v-btn text color="#FFF" 
+            href="/login"
           ><h3 >Login</h3>
           </v-btn>
         </v-col>
         <v-col  class="my-auto ">
-          <v-btn text color="#FFF" block
+          <v-btn text color="#FFF" 
           href="/register"
           ><h3 >Registrarse</h3>
           </v-btn>
         </v-col>
+        </template>
+
+        <template v-if="login">
+          <template v-if="typeRol === 'Administrador'">
+        <v-col class="mx-16"></v-col>
         <v-col  class=" my-auto ">
           <v-btn  text color="#FFF" block
           href="/listUsers"
@@ -40,7 +49,30 @@
             ><h3 >Adimin Cursos</h3>
             </v-btn>
           </v-col>
-          
+
+        <v-col  class=" my-auto " >
+          <v-btn text color="#FFF" block
+            @click="deleteToke()"
+          ><h3 >Logout</h3>
+          </v-btn>
+        </v-col>
+          </template>
+          <template v-else>
+            <v-col  class="my-auto ">
+                <v-btn text color="#FFF" block 
+                href="/listCourses"
+                ><h3 >Lista de Cursos</h3>
+                </v-btn>
+              </v-col>
+            <v-col  class=" my-auto " >
+              <v-btn text color="#FFF" block
+                @click="deleteToke()"
+              ><h3 >Logout</h3>
+              </v-btn>
+            </v-col>
+          </template>
+        </template>
+        
 
       </v-row>
 
@@ -64,9 +96,25 @@
 </template>
 
 <script>
+
 export default {
   data: () => ({
+    login: localStorage.getItem('token'),
+    typeRol:localStorage.getItem('typeRol'),
   }),
+
+
+  methods:{
+
+      deleteToke(){
+    localStorage.removeItem('token')
+    localStorage.removeItem('typeRol')
+    this.$router.push( "/");
+    location.reload(true)
+  },
+
+  }
+
 };
 </script>
 
